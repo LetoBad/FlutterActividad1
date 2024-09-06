@@ -29,7 +29,7 @@ class _Tela1State extends State<Tela1> {
           CircleAvatar(
             radius: 70,
             backgroundImage: NetworkImage(
-                "https://cdn-icons-png.flaticon.com/128/5087/5087579.png"),
+                "https://cdn-icons-png.flaticon.com/128/17725/17725721.png"),
           ),
           Text(
             "Ingrese seu Usuario",
