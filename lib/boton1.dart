@@ -13,7 +13,7 @@ class Boton extends StatelessWidget {
           ElevatedButton(
             style: ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll(
-                    const Color.fromARGB(255, 34, 240, 116)),
+                    const Color.fromARGB(255, 36, 192, 244)),
                 foregroundColor:
                     WidgetStatePropertyAll(const Color.fromARGB(255, 0, 0, 0))),
             onPressed: () {funcao();},
