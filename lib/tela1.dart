@@ -60,7 +60,10 @@ class _Tela1State extends State<Tela1> {
               Sucesso();
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return Sucesso();
-              }));
+              }
+              
+              ));
+            
             }
           }),
         ],
