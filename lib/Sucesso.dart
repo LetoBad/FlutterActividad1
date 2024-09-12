@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:login/boton1.dart';
 
-
 class Sucesso extends StatelessWidget {
-  const Sucesso({super.key});
+  final String nomeUsuario;
+
+  const Sucesso({super.key, required this.nomeUsuario});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +17,10 @@ class Sucesso extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text("Login Correcto")
+            Text("BienVenido, $nomeUsuario!"),
           ],
-        )
-      )
+        ),
+      ),
     );
   }
 }

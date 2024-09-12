@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Boton extends StatelessWidget {
   final String nome;
   final Function() funcao;
-  const Boton(this.nome , this.funcao,{ super.key});
+  const Boton(this.nome, this.funcao, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,9 @@ class Boton extends StatelessWidget {
                     const Color.fromARGB(255, 36, 192, 244)),
                 foregroundColor:
                     WidgetStatePropertyAll(const Color.fromARGB(255, 0, 0, 0))),
-            onPressed: () {funcao();},
+            onPressed: () {
+              funcao();
+            },
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(

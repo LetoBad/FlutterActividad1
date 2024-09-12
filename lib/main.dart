@@ -13,9 +13,6 @@ class LoginApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Login",
-      home: Tela1()
-    );
+        debugShowCheckedModeBanner: false, title: "Login", home: Tela1());
   }
 }

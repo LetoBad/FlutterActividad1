@@ -11,7 +11,6 @@ class Tela1 extends StatefulWidget {
 
 class _Tela1State extends State<Tela1> {
   final String nome = "LetoBad";
-
   final String pass = "Flutter";
 
   final controllerNome = TextEditingController();
@@ -51,19 +50,20 @@ class _Tela1State extends State<Tela1> {
             obscureText: true,
           ),
           Boton("Login", () {
-            controllerNome.text;
-            controllerSenha.text;
+            String enteredNome = controllerNome.text;
+            String enteredSenha = controllerSenha.text;
 
-            if (controllerNome.text == "LetoBad" &&
-                controllerSenha.text == "Flutter") {
-              print(controllerNome.text);
-              Sucesso();
+            if (enteredNome == nome && enteredSenha == pass) {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return Sucesso();
-              }
-              
-              ));
-            
+                return Sucesso(nomeUsuario: enteredNome);
+              }));
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("Usuário ou senha incorretos!"),
+                  backgroundColor: Colors.red,
+                ),
+              );
             }
           }),
         ],
