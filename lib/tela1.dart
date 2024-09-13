@@ -10,6 +10,7 @@ class Tela1 extends StatefulWidget {
 }
 
 class _Tela1State extends State<Tela1> {
+  bool _showPass = false;
   final String nome = "LetoBad";
   final String pass = "Flutter";
 
@@ -23,50 +24,76 @@ class _Tela1State extends State<Tela1> {
         title: Text("Login"),
         backgroundColor: const Color.fromARGB(255, 36, 192, 244),
       ),
-      body: Column(
-        children: [
-          CircleAvatar(
-            radius: 70,
-            backgroundImage: NetworkImage(
-                "https://cdn-icons-png.flaticon.com/128/17725/17725721.png"),
-          ),
-          Text(
-            "Ingrese seu Usuario",
-            style: TextStyle(fontSize: 25),
-          ),
-          TextField(
-            controller: controllerNome,
-            decoration: InputDecoration(labelText: "Nome"),
-          ),
-          Text(
-            "Ingrese sua Senha",
-            style: TextStyle(fontSize: 25),
-          ),
-          TextField(
-            controller: controllerSenha,
-            decoration: InputDecoration(
-              labelText: "Senha",
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CircleAvatar(
+                radius: 70,
+                backgroundImage: NetworkImage(
+                    "https://cdn-icons-png.flaticon.com/128/17725/17725721.png"),
+              ),
             ),
-            obscureText: true,
-          ),
-          Boton("Login", () {
-            String enteredNome = controllerNome.text;
-            String enteredSenha = controllerSenha.text;
-
-            if (enteredNome == nome && enteredSenha == pass) {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return Sucesso(nomeUsuario: enteredNome);
-              }));
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text("Usuário ou senha incorretos!"),
-                  backgroundColor: Colors.red,
+            SizedBox(height: 20),
+            Text(
+              "Ingrese seu Usuario",
+              style: TextStyle(fontSize: 25),
+            ),
+            TextField(
+              controller: controllerNome,
+              decoration: InputDecoration(
+                labelText: "Nome",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              "Ingrese sua Senha",
+              style: TextStyle(fontSize: 25),
+            ),
+            TextField(
+              controller: controllerSenha,
+              decoration: InputDecoration(
+                icon: Icon(Icons.lock),
+                hintText: "Senha",
+                hintStyle: TextStyle(color: Colors.black),
+                border: OutlineInputBorder(),
+                suffixIcon: GestureDetector(
+                  child: Icon(
+                    _showPass ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.black,
+                  ),
+                  onTap: () {
+                    setState(() {
+                      _showPass = !_showPass;
+                    });
+                  },
                 ),
-              );
-            }
-          }),
-        ],
+              ),
+              obscureText: !_showPass,
+            ),
+            SizedBox(height: 20),
+            Boton("Login", () {
+              String enteredNome = controllerNome.text;
+              String enteredSenha = controllerSenha.text;
+
+              if (enteredNome == nome && enteredSenha == pass) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Sucesso(nomeUsuario: enteredNome);
+                }));
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Usuário ou senha incorretos!"),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
+            }),
+          ],
+        ),
       ),
     );
   }
